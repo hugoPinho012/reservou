@@ -3,7 +3,7 @@
  * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://reactnativeunistyles.vercel.app), etc.
  */
 
-export const Colors = {
+export default {
   lightGray: "#737373",
   gray: "#4f4f4f",
   darkGray: "#353535",

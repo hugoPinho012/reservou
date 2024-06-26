@@ -1,70 +1,120 @@
-import { Image, StyleSheet, Platform } from 'react-native';
-
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+import Colors from "@/constants/Colors";
+import { defaultStyles } from "@/constants/Styles";
+import { Ionicons } from "@expo/vector-icons";
+import {
+  Image,
+  StyleSheet,
+  Platform,
+  View,
+  Text,
+  TouchableOpacity,
+  TextInput,
+  ScrollView,
+} from "react-native";
 
 export default function HomeScreen() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({ ios: 'cmd + d', android: 'cmd + m' })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+    <ScrollView
+      keyboardShouldPersistTaps="handled"
+      scrollEnabled={false}
+      contentContainerStyle={defaultStyles.container}
+    >
+      <View style={{ flexGrow: 1, paddingTop: 40 }} />
+
+      <View style={{ flexGrow: 1, paddingTop: 30 }}>
+        <View style={{ flexGrow: 1 }}>
+          <View style={{ marginLeft: -10 }}>
+            <Text style={defaultStyles.textTitle}>Login</Text>
+          </View>
+          <View style={styles.inputContainer}>
+            <Ionicons
+              name="person-circle-outline"
+              size={16}
+              color={Colors.gray}
+            />
+            <TextInput //
+              style={styles.textInput}
+              placeholder="Usuário"
+              placeholderTextColor={Colors.gray}
+            />
+          </View>
+          <View style={[styles.inputContainer, { marginTop: 10 }]}>
+            <Ionicons name="lock-closed" size={16} color={Colors.gray} />
+            <TextInput //
+              o
+              style={styles.textInput}
+              placeholder="Senha"
+              placeholderTextColor={Colors.gray}
+            />
+          </View>
+
+          <View
+            style={{
+              alignItems: "flex-end",
+            }}
+          >
+            <TouchableOpacity style={{ padding: 15, paddingRight: 0 }}>
+              <Text
+                style={{
+                  color: Colors.primary,
+                  fontWeight: "500",
+                  textDecorationLine: "underline",
+                }}
+              >
+                Redefinir senha
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+        <View // Login button container
+          style={{
+            flexGrow: 1,
+            justifyContent: "center",
+          }}
+        >
+          <TouchableOpacity
+            style={{
+              backgroundColor: Colors.primary,
+              paddingVertical: 20,
+              justifyContent: "center",
+              alignItems: "center",
+              borderRadius: 30,
+            }}
+          >
+            <Text style={{ fontSize: 24, fontWeight: "500", color: "white" }}>
+              Entrar
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     gap: 8,
   },
   stepContainer: {
     gap: 8,
     marginBottom: 8,
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+
+  inputContainer: {
+    flexDirection: "row",
+    borderWidth: 0.5,
+    borderColor: Colors.lightGray,
+    borderRadius: 25,
+    justifyContent: "center",
+    alignItems: "center",
+    paddingLeft: 10,
+  },
+  textInput: {
+    flexGrow: 1,
+    paddingVertical: 25,
+    fontSize: 16,
+    paddingLeft: 8,
   },
 });
