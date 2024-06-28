@@ -6,11 +6,13 @@ export const defaultStyles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.background,
     paddingHorizontal: 20,
+    paddingVertical: 60,
   },
   textTitle: {
     color: Colors.darkGray,
     fontSize: 50,
     padding: 16,
     fontWeight: "500",
+    textAlign: "left",
   },
 });

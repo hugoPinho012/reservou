@@ -14,6 +14,7 @@ export default function TabLayout() {
           headerShown: false,
         }}
       />
+      <Stack.Screen name="reserve" options={{ headerShown: false }} />
     </Stack>
   );
 }

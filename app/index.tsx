@@ -1,6 +1,8 @@
+import Button from "@/components/Button";
 import Colors from "@/constants/Colors";
 import { defaultStyles } from "@/constants/Styles";
 import { Ionicons } from "@expo/vector-icons";
+import { Link, useRouter } from "expo-router";
 import {
   Image,
   StyleSheet,
@@ -13,6 +15,14 @@ import {
 } from "react-native";
 
 export default function HomeScreen() {
+  const router = useRouter();
+
+  const handleOnPress = () => {
+    console.log("catchau");
+
+    router.push("/reserve");
+  };
+
   return (
     <ScrollView
       keyboardShouldPersistTaps="handled"
@@ -41,7 +51,6 @@ export default function HomeScreen() {
           <View style={[styles.inputContainer, { marginTop: 10 }]}>
             <Ionicons name="lock-closed" size={16} color={Colors.gray} />
             <TextInput //
-              o
               style={styles.textInput}
               placeholder="Senha"
               placeholderTextColor={Colors.gray}
@@ -72,19 +81,7 @@ export default function HomeScreen() {
             justifyContent: "center",
           }}
         >
-          <TouchableOpacity
-            style={{
-              backgroundColor: Colors.primary,
-              paddingVertical: 20,
-              justifyContent: "center",
-              alignItems: "center",
-              borderRadius: 30,
-            }}
-          >
-            <Text style={{ fontSize: 24, fontWeight: "500", color: "white" }}>
-              Entrar
-            </Text>
-          </TouchableOpacity>
+          <Button text={"Entrar"} handleOnPress={handleOnPress} />
         </View>
       </View>
     </ScrollView>
